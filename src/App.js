@@ -4,6 +4,7 @@ import './App.css';
 import GithubTrend from './components/GithubTrend';
 import TopLanguage from './components/TopLanguage';
 
+import Header from './header/Header';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <SearchAll />
       <GithubTrend />
       <TopLanguage />
+      <Header />
     </div>
   );
 }
