@@ -10,7 +10,7 @@ const GithubTrend = () => {
   }, []);
 
   const loadData = async () => {
-    axios(`https://cors-anywhere.herokuapp.com/https://github.com/trending/developers/javascript?since=monthly
+    axios(`https://cors-anywhere.herokuapp.com/https://github.com/trending/developers/c++?since=monthly
       `).then(({ data }) => {
       const user = [];
       const $ = cheerio.load(data);
@@ -23,7 +23,7 @@ const GithubTrend = () => {
             img: $(el).attr('src'),
             userName: $(el).attr('alt').slice(1, $(el).attr('alt').length),
             fullname: $('.h3').children('a')[i].children[0].data.trim(),
-            info: $('article').children('.mt-1').children()[i].next.data,
+            info: $('article').children('.mt-1').children()[i]?.next.data,
           };
         } else {
           return;
