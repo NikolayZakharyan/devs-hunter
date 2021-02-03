@@ -1,6 +1,6 @@
 
 import React from 'react';
-import "../aboutUsAndFooterStyle.css"
+import './aboutUsAndFooterStyle.css'
 
 
 function AboutUsAndFooter() {

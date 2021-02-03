@@ -57,13 +57,13 @@
         width: 100%;
       }
       .footer-text-left{
-        margin-left: 5px;
+        margin-left: 3px;
       }
       .footer-text-right{
-        margin-right: 10px;
+        margin-right: 3px;
       }
       span{
-        margin-left: 8px;
+        margin-left: 5px;
       }
     }
 
