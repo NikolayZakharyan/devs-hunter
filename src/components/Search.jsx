@@ -17,7 +17,7 @@ const Search = () => {
         ></input>
         <button onClick={getInput}>SEARCH</button>
       </div>
-      <SearchResult />
+      {/* <SearchResult /> */}
     </div>
   );
 };
