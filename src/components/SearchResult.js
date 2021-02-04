@@ -4,42 +4,55 @@ import Example from './Example.js';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-
-
 const SearchResult = ({ data }) => {
-  console.log(data);
-  const mainUrl = `https://github.com/hrach`;
+  const [card, setCard] = useState([]);
+
+  const mainUrl = `https://api.github.com/search/users?q=`;
 
   useEffect(() => {
-    getData();
-  }, []);
+    getAPI();
+  }, [data]);
 
-  const getData = async (url) => {
+  const getAPI = () => {
+    console.log(mainUrl + data);
+    axios(mainUrl + data).then(({ data }) => {
+      getData(data.items);
+    });
+  };
+
+  const getData = async (dataArray) => {
     // https://cors-anywhere.herokuapp.com/
+    // https://api.allorigins.win/raw?url=
 
-    axios('https://api.allorigins.win/raw?url=https://github.com/armen').then(
-      ({ data }) => {
-        // console.log(data)
+    setCard([]);
+
+    dataArray.map((el, i) => {
+      axios(
+        `https://api.allorigins.win/raw?url=https://github.com/${el.login}`
+      ).then(({ data }) => {
         const $ = cheerio.load(data);
+        const fullName = $('.vcard-fullname').text();
+        const profileBio = $('.user-profile-bio').text();
+        const location = $('.p-label').text();
+        const skills = [];
 
-        // console.log($('.vcard-fullname').text())
-        // console.log($('.user-profile-bio').text())
-        // console.log($('.p-label').text())
-
-        console.log($('span'));
-
-        // $('.programmingLanguage').each(elem => {
-        //     console.log(elem.text())
-        // })
-      }
-    );
-
-
+        $('[itemprop="programmingLanguage"]').each((i, elem) => {
+          if (skills.indexOf($(elem).text()) == -1 && $(elem).text()) {
+            skills.push($(elem).text());
+          }
+        });
+        const { login, avatar_url } = dataArray[i];
+        setCard((card) => [
+          ...card,
+          { fullName, profileBio, location, skills, login, avatar_url },
+        ]);
+      });
+    });
   };
 
   return (
     <div>
-      <Example />
+      <Example info={card} />
     </div>
   );
 };

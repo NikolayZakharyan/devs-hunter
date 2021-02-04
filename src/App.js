@@ -11,7 +11,7 @@ function App() {
       <Header />
       <SearchAll />
       <GithubTrend />
-      <AboutUsAndFooter/>
+      {/* <AboutUsAndFooter/> */}
     </div>
   );
 }

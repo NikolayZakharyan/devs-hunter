@@ -2,35 +2,32 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
-import Image from 'react-bootstrap/Image';
 
-const UserCard = () => {
+const UserCard = ({ info }) => {
+  console.log(info);
   return (
     <StyleWrapper>
       <div className="card-container">
         <img
           className="round"
-          src="https://randomuser.me/api/portraits/women/79.jpg"
+          src={info.avatar_url}
           alt="user"
         />
-        <h3>Ricky Park</h3>
-        <h6>New York</h6>
-        <p>
-          User interface designer and front-end developer User interface designer and front-end developerUser interface designer and front-end developer
-        </p>
+        {info.fullName ? <h3>{info.fullName}</h3> : <></>}
+        {info.location ? <h6>{info.location}</h6> : <h6>{'Earth'}</h6>}
+        {info.login ? <p>{info.login}</p> : <h6></h6>}
+        {info.profileBio ? <p>{info.profileBio}</p> : <></>}
+
         <div className="buttons">
           <button className="primary">Message</button>
           <button className="primary ghost">Following</button>
         </div>
         <div className="skills">
           <ul>
-            <li>UI / UX</li>
-            <li>Front End Development</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Node</li>
+            {
+              info.skills.map((el,i) => {return <li key={i}>{el}</li>})
+            }
+            
           </ul>
         </div>
       </div>
@@ -51,6 +48,10 @@ const StyleWrapper = styled.div`
   p {
     font-size: 10px;
     line-height: 12px;
+  }
+
+  .round {
+    height: 140px;
   }
 
   .card-container {
@@ -85,7 +86,6 @@ const StyleWrapper = styled.div`
   p {
     padding-left: 7px;
     padding-right: 7px;
-
   }
 
   button.primary {
@@ -97,7 +97,6 @@ const StyleWrapper = styled.div`
     font-family: Montserrat, sans-serif;
     font-weight: 500;
     padding: 4px 20px;
-    
   }
 
   button.primary.ghost {

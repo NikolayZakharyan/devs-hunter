@@ -6,7 +6,7 @@ const GithubTrend = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    loadData();
+    // loadData();
   }, []);
 
   const loadData = async () => {
@@ -34,7 +34,7 @@ const GithubTrend = () => {
     });
   };
 
-  console.log(users);
+  // console.log(users);
 
   return <div></div>;
 };
