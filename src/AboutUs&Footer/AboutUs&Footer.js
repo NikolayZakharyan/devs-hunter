@@ -51,9 +51,9 @@ function CreateFooter(){
         </div>
         <div className="footer-text-right">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <span><i class="fa fa-facebook" ></i></span>
-        <span><i class="fa fa-instagram"></i></span>
-        <span><i class="fa fa-twitter"></i></span>
+        <span><i className="fa fa-facebook" ></i></span>
+        <span><i className="fa fa-instagram"></i></span>
+        <span><i className="fa fa-twitter"></i></span>
         </div>
         </div>
 
