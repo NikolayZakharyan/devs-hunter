@@ -3,6 +3,7 @@ import SearchAll from './pages/SearchAll';
 import './App.css';
 import GithubTrend from './components/GithubTrend';
 import Header from './pages/header/Header';
+import AboutUsAndFooter from './AboutUs&Footer/AboutUs&Footer'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <SearchAll />
       <GithubTrend />
+      <AboutUsAndFooter/>
     </div>
   );
 }
