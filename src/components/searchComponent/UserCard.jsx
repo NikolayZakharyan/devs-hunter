@@ -2,32 +2,35 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
-
 const UserCard = ({ info }) => {
-  console.log(info);
+  // console.log(info);
   return (
     <StyleWrapper>
       <div className="card-container">
-        <img
-          className="round"
-          src={info.avatar_url}
-          alt="user"
-        />
+        <img className="round" src={info.avatar_url} alt="user" />
         {info.fullName ? <h3>{info.fullName}</h3> : <></>}
         {info.location ? <h6>{info.location}</h6> : <h6>{'Earth'}</h6>}
-        {info.login ? <p>{info.login}</p> : <h6></h6>}
+        {info.login ? (
+          <p>
+            <a href={`http://www.github.com/${info.login}`} target="_blank">
+              {' '}
+              {info.login}
+            </a>
+          </p>
+        ) : (
+          <h6></h6>
+        )}
         {info.profileBio ? <p>{info.profileBio}</p> : <></>}
 
         <div className="buttons">
-          <button className="primary">Message</button>
+          <button className="primary">Analytics</button>
           <button className="primary ghost">Following</button>
         </div>
         <div className="skills">
           <ul>
-            {
-              info.skills.map((el,i) => {return <li key={i}>{el}</li>})
-            }
-            
+            {info.skills.map((el, i) => {
+              return <li key={i}>{el}</li>;
+            })}
           </ul>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SearchAll from './pages/SearchAll';
 import './App.css';
 import GithubTrend from './components/GithubTrend';
 import Header from './pages/header/Header';
-import AboutUsAndFooter from './AboutUs&Footer/AboutUs&Footer'
+// import AboutUsAndFooter from './AboutUs&Footer/AboutUs&Footer'
 
 function App() {
   return (
