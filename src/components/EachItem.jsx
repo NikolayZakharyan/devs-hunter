@@ -15,44 +15,42 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard({users}) {
+export default function ImgMediaCard(props) {
   const classes = useStyles();
 
-  console.log(users)
+  // console.log(users)
 
-  return <></>
-
-  // return (
-  //   <Card className={classes.root}>
-  //     <CardActionArea>
-  //       <CardMedia
-  //         component="img"
-  //         alt="Contemplative Reptile"
-  //         height="140"
-  //         image={props.src}
-  //         title="developer"
-  //       />
-  //       <CardContent>
-  //         <Typography gutterBottom variant="h7" component="h2">
-  //           {props.fullname}
-  //         </Typography>
-  //         <Typography gutterBottom variant="h6" component="h2">
-  //           {props.username}
-  //         </Typography>
-  //         <Typography  color="textSecondary" component="span">
-  //         <FontAwesomeIcon icon={faFire} />
-  //         POPULAR REPO
-  //         </Typography>
-  //         <Typography variant="body2" color="textSecondary" component="p">
-  //           {props.info}
-  //         </Typography>
-  //       </CardContent>
-  //     </CardActionArea>
-  //     <CardActions>
-  //       <Button size="small" color="primary" href="https://github.com/">
-  //         More
-  //       </Button>
-  //     </CardActions>
-  //   </Card>
-  // );
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height="140"
+          image={props.src}
+          title="developer"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h7" component="h2">
+            {props.fullname}
+          </Typography>
+          <Typography gutterBottom variant="h6" component="h2">
+            {props.username}
+          </Typography>
+          <Typography  color="textSecondary" component="span">
+          <FontAwesomeIcon icon={faFire} />
+          POPULAR REPO
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.info}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary" href="https://github.com/">
+          More
+        </Button>
+      </CardActions>
+    </Card>
+  );
 }
