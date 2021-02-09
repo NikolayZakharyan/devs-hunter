@@ -1,43 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import * as cheerio from 'cheerio';
-import "./githubTrend.css";
-import ImgMediaCard from "./EachItem";
+import React from 'react';
 
+import './githubTrend.css';
+import PopLangChart from './githubTrends/PopLangChart';
+import StarsCard from './StarsCard';
 
 const GithubTrend = () => {
-  const [users, setUsers] = useState([]);
+  const language = ['JavaScript', 'Python', 'Java'];
 
-  useEffect(() => {
-    // loadData();
-  }, []);
-
-  const loadData = async () => {
-    axios(`https://cors-anywhere.herokuapp.com/https://github.com/trending/developers/java?since=monthly
-      `).then(({ data }) => {
-      const user = [];
-      const $ = cheerio.load(data);
-
-      $('.lh-condensed').children('a');
-      const topJS = [];
-      $('.avatar-user').each((i, el) => {
-        if (i < 5) {
-          topJS[i] = {
-            img: $(el).attr('src'),
-            userName: $(el).attr('alt').slice(1, $(el).attr('alt').length),
-            fullname: $('.h3').children('a')[i].children[0].data.trim(),
-            info: $('article').children('.mt-1').children()[i]?.next.data,
-          };
-        } else {
-          return;
-        }
-      });
-
-      setUsers(topJS);
-    });
-  };
-
-  // console.log(users);
+  // https://api.allorigins.win/raw?url=
+  // https://cors-anywhere.herokuapp.com/
 
   return (
     <section>
@@ -45,17 +16,30 @@ const GithubTrend = () => {
         <h1>Trends</h1>
         <p>These are the developers building the hot tools today.</p>
       </div>
-      <div className="trends">
-        {
-          users.map((item, index) => {
-            return <ImgMediaCard
-              index={index}
-              src={item.img}
-              fullname={item.fullname}
-              username={item.userName}
-              info={item.info} />
-          })
-        }
+      <PopLangChart />
+      <div className="trends-contanier">
+        <h4>--------------ROCK STARs in GITHUB week---------------</h4>
+        <h6>
+          JAVASCRIPT------------------------------------------------------------
+        </h6>
+
+        <div className="trends">
+          <StarsCard data={language[0]} />
+        </div>
+        <h6>
+          PYTHON ------------------------------------------------------------
+        </h6>
+
+        <div className="trends">
+          {' '}
+          <StarsCard data={language[1]} />
+        </div>
+        <h6>JAVA --------------------------------------------------------</h6>
+
+        <div className="trends">
+          {' '}
+          <StarsCard data={language[2]} />
+        </div>
       </div>
     </section>
   );
