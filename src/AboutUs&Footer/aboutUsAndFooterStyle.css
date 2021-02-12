@@ -5,6 +5,7 @@
         text-align: center;
         margin: 0 auto;
         position: relative;
+        margin-bottom: 25px;
       } 
 
       .about-us-title {
@@ -31,9 +32,9 @@
         height: 9%;
         background-color: rgb(49, 42, 42);
         color: white;
-        bottom: -0.001%;
-        position: fixed;
+        position: absolute;
         font-size: 13px;
+        flex-shrink: 0;
       }
 
       .footer-text-left{

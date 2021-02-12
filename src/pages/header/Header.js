@@ -53,7 +53,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
     root: {
         '&:focus': {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: "#7D9C9B",
             '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
                 color: theme.palette.common.white,
             },
@@ -195,7 +195,7 @@ export default function Header() {
             </HideOnScroll>
             <Toolbar   id="back-to-top-anchor"/>
             <ScrollTop >
-                <Fab color="primary" size="small" aria-label="scroll back to top">
+                <Fab color="#7D9C9B" size="small" aria-label="scroll back to top">
                     <KeyboardArrowUpIcon />
                 </Fab>
             </ScrollTop>
