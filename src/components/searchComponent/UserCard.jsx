@@ -1,15 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
-import { GithubContext } from '../../context/context';
-
 
 const UserCard = ({ info }) => {
-  const { setGetUserLogin } = React.useContext(GithubContext);
-
+  console.log(info.org);
   return (
     <StyleWrapper>
-      <div className="card-container">
+      <div
+        className={!info.org.length ? 'card-container' : 'card-container'}
+      >
         <img className="round" src={info.avatar_url} alt="user" />
         {info.fullName ? <h3>{info.fullName}</h3> : <></>}
         {info.location ? <h6>{info.location}</h6> : <h6>{'Earth'}</h6>}
@@ -19,6 +18,9 @@ const UserCard = ({ info }) => {
               {' '}
               {info.login}
             </a>
+            {info.org.length ? <span >organization</span> : ''}
+        
+
           </p>
         ) : (
           <h6></h6>
@@ -29,7 +31,6 @@ const UserCard = ({ info }) => {
           <button
             className="primary"
             onClick={() => {
-              setGetUserLogin(info.login);
               window.open(`/show/${info.login}`, '_blank');
             }}
           >
@@ -78,6 +79,9 @@ const StyleWrapper = styled.div`
     width: 300px;
     max-width: 100%;
     text-align: center;
+  }
+  .org {
+    background-color: #f08989;
   }
 
   /* .card-container .pro {
