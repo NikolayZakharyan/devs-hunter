@@ -1,9 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
+import { GithubContext } from '../../context/context';
+
 
 const UserCard = ({ info }) => {
-  // console.log(info);
+  const { setGetUserLogin } = React.useContext(GithubContext);
+
   return (
     <StyleWrapper>
       <div className="card-container">
@@ -23,7 +26,15 @@ const UserCard = ({ info }) => {
         {info.profileBio ? <p>{info.profileBio}</p> : <></>}
 
         <div className="buttons">
-          <button className="primary">Analytics</button>
+          <button
+            className="primary"
+            onClick={() => {
+              setGetUserLogin(info.login);
+              window.open(`/show/${info.login}`, '_blank');
+            }}
+          >
+            Analytics
+          </button>
           <button className="primary ghost">Following</button>
         </div>
         <div className="skills">

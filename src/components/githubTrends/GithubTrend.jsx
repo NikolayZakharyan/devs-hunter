@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './githubTrend.css';
-import PopLangChart from './githubTrends/PopLangChart';
+import PopLangChart from './PopLangChart';
 import StarsCard from './StarsCard';
 
 const GithubTrend = () => {

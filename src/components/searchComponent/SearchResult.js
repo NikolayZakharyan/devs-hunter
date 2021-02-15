@@ -94,7 +94,7 @@ const SearchResult = ({ data }) => {
     <div>
       {isload ? (
         <>
-          <h4>{searchResult} : we fined users (max limit 30 result)</h4>
+          <h4>{searchResult} : we find users (max limit 30 result)</h4>
           <h5>{searchLimit} : search try limit count</h5>
           {searchResult ? <Example info={card} /> : <>NO SEARCH RESULT</>}
         </>
