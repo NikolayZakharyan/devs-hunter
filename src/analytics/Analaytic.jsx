@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import { GithubContext } from '../context/context';
+import UsersPage from '../usersPage/usersPage';
 
 function Analytic() {
   const { limite } = React.useContext(GithubContext);
@@ -24,7 +25,7 @@ function Analytic() {
     created_at: '',
     twitter_username: '',
     updated_at: '',
-    type:''
+    type: '',
   });
   const [userrepo, setUserrepo] = useState('');
   // const [following, setFollowing] = useState(0);
@@ -49,7 +50,7 @@ function Analytic() {
         twitter_username,
         updated_at,
         repos_url,
-        type
+        type,
       } = data;
       //add in state
       setAvatar(avatar_url);
@@ -64,9 +65,10 @@ function Analytic() {
         created_at,
         twitter_username,
         updated_at,
-        type
+        type,
+        avatar_url
       });
-      setUserrepo(repos_url)
+      setUserrepo(repos_url);
     });
   }, [user]);
 
@@ -74,17 +76,15 @@ function Analytic() {
 
   return (
     <div>
+      <UsersPage user={ userInfo} />
       limite: <h1>{limite}</h1>
       <div>
         <img src={avatar} alt="" />
         <h4>{name}</h4>
         <p>followers: {follow.followers}</p>
         <p>following: {follow.following}</p>
-        
       </div>
-      <div>
-        repo URL: {userrepo}
-      </div>
+      <div>repo URL: {userrepo}</div>
     </div>
   );
 }

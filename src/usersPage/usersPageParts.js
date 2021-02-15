@@ -15,118 +15,122 @@ import { Avatar } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import './usersPage.css';
 
-
-const user={
-  name: 'Liana',
-  surname: 'Ilyichyova',
-  company: 'Hellotex',
-  position: 'HR manager',
-  location: "Armenia",
-  email: 'liana.ilyichyova@gmail.com',
-  phone: '+374 98 331534',
-}
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
-    maxWidth: "17%",
-    minWidth: "17%",
-    width: "17%",
+    maxWidth: '17%',
+    minWidth: '17%',
+    width: '17%',
   },
   drawerPaper: {
-    backgroundImage: `linear-gradient(#F5F5F5,rgb(49, 42, 42))`,
+    // backgroundImage: `linear-gradient(#F5F5F5,rgb(49, 42, 42))`,
     color: 'rgb(49, 42, 42)',
-    maxWidth: "17%",
-    minWidth: "17%",
-    width: "17%",
+    maxWidth: '17%',
+    minWidth: '17%',
+    width: '17%',
     right: '12%',
     height: '1000px',
     top: '10.5%',
-    position: "absolute",
+    position: 'absolute',
   },
   bigAvatar: {
     margin: 30,
     width: 80,
     height: 80,
-    backgroundColor: "#7D9C9B",
+    backgroundColor: '#7D9C9B',
   },
   item: {
     '& span, & svg': {
-      fontSize: "30px",
+      fontSize: '30px',
     },
     '& span': {
-      marginLeft: "-22px",
-      fontSize: "13px",
+      marginLeft: '-22px',
+      fontSize: '13px',
     },
-  }
+  },
 }));
 
-function SideMenu() {
+function SideMenu({ user }) {
   const classes = useStyles();
+
+  console.log(user);
+
+  // const user={
+  //   name: 'Liana',
+  //   surname: 'Ilyichyova',
+  //   company: 'Hellotex',
+  //   position: 'HR manager',
+  //   location: "Armenia",
+  //   email: 'liana.ilyichyova@gmail.com',
+  //   phone: '+374 98 331534',
+  // }
 
   return (
     <Drawer
       open={true}
-      variant='permanent'
-      anchor='left'
+      variant="permanent"
+      anchor="left"
       className={classes.drawer}
       classes={{
         paper: classes.drawerPaper,
       }}
     >
-      <Grid container justify='center' alignItems='center'>
+      <Grid container justify="center" alignItems="center">
         <Avatar
+          alt="Remy Sharp"
+          src={user.avatar_url}
           className={classes.bigAvatar}
         />
       </Grid>
       <div className={classes.item}>
-      <List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <AccountCircle/>
+              <AccountCircle />
             </ListItemIcon>
-            <ListItemText primary={`${user.name} ${user.surname}`}/>
+            {/* <ListItemText primary={`${user.name} ${user.surname}`} /> */}
+            <ListItemText primary={`${user.name}`} />
           </ListItem>
-      </List>
-      <List>
+        </List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <MyLocationIcon/>
+              <MyLocationIcon />
             </ListItemIcon>
             <ListItemText primary={`${user.location}`} />
           </ListItem>
-      </List>
-      <List>
+        </List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <BusinessIcon/>
+              <BusinessIcon />
             </ListItemIcon>
             <ListItemText primary={`${user.company}`} />
           </ListItem>
-      </List>
-      <List>
+        </List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <AssignmentIndIcon/>
+              <AssignmentIndIcon />
             </ListItemIcon>
             <ListItemText primary={`${user.position}`} />
           </ListItem>
-      </List>
-      <List>
+        </List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <EmailIcon/>
+              <EmailIcon />
             </ListItemIcon>
             <ListItemText primary={`${user.email}`} />
           </ListItem>
-      </List>
-      <List>
+        </List>
+        <List>
           <ListItem>
             <ListItemIcon>
-              <PhoneIcon/>
+              <PhoneIcon />
             </ListItemIcon>
             <ListItemText primary={`${user.phone}`} />
           </ListItem>
-      </List>
+        </List>
       </div>
     </Drawer>
   );

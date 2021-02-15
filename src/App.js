@@ -28,14 +28,6 @@ function App() {
 
   return (
     <div className="App">
-
-//       <Header />
-//       <div className="middle-page">
-//       <SearchAll />
-//       <GithubTrend />
-//       </div>
-//       <AboutUsAndFooter/>
-
       <Router>
         <Switch>
           <Route path="/" exact>
@@ -60,7 +52,6 @@ function App() {
         </Switch>
         <AboutUsAndFooter />
       </Router>
-
     </div>
   );
 }
