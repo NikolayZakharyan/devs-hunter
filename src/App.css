@@ -40,3 +40,8 @@
     transform: rotate(360deg);
   }
 }
+
+div.git_language > div {
+  /* background: #000; */
+  height: 600px;
+}

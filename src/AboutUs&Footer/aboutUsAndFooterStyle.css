@@ -9,12 +9,13 @@
       } 
 
       .about-us-title {
+
         font-size: 18px;
         letter-spacing: 0.1em;
         color:black;
         font-family: "Sitara";
         margin: 0 auto;
-        height: 30px;
+        height: 20px;
       }
 
       span:hover{
@@ -29,12 +30,17 @@
 
       .footer{
         width: 100%;
-        height: 9%;
+        height: 6%;
         background-color: rgb(49, 42, 42);
         color: white;
         position: absolute;
         font-size: 13px;
+
         flex-shrink: 0;
+
+/*         z-index: 90;
+ */
+
       }
 
       .footer-text-left{
