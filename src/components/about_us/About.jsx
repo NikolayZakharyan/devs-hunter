@@ -1,17 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import { YMaps, Map, Placemark, GeolocationControl } from "react-yandex-maps";
+import { BorderAllRounded } from '@material-ui/icons';
+
 
 const About = () => {
   return (
     <Wrapper>
       <div>
         <div className="about-section">
-          <h1>About Us Page</h1>
-          <p>Some text about who we are and what we do.</p>
-          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, molestiae. Repellat porro in, quasi ad cum voluptatem non, commodi corrupti eaque facilis fuga harum debitis minus sint illo similique suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, molestiae. Repellat porro in, quasi ad cum voluptatem non, commodi corrupti eaque facilis fuga harum debitis minus sint illo similique suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, molestiae. Repellat porro in, quasi ad cum voluptatem non, commodi corrupti eaque facilis fuga harum debitis minus sint illo similique suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, molestiae. Repellat porro in, quasi ad cum voluptatem non, commodi corrupti eaque facilis fuga harum debitis minus sint illo similique suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, molestiae. Repellat porro in, qu</p>
+          <h1>About Us</h1>
+          <p style={{ fontSize: '14px' }}> Finding a skilled developer that would boost your project is similar to chasing a dream. <br/>
+           The race is long, the forest is dark and there is a hunter hiding behind every tree.<br/>
+           With the entire world screaming about the huge gap between the number of developers and the number of vacancies, 
+           one can easily find programmers, the another one  should have to run an extra mile with the recruitment process.<br/>
+           Are you a human, who is ready to achive his goal of becoming programmer or broadend your perception of programming? <br/>
+           Here's one more way to find your dream developer, who will help you to achieve the job that fits you perfectly.<br/>
+           If you are a recruiter, DevsHunter will help you to find the right people for the jobs, to match candidates to the job they are born for.<br/>
+           DevsHunter is a platform which can help you to find all the information that will best describe the person's 
+           knowledge, work experience, feedbacks and completed projects.<br/>
+           Good luck and enjoy DevsHunter  :)<br/>
+           Best regards DevsHunter team.
+           </p>
         </div>
 
-              <h2 style={{ textAlign: 'center' }}>Our Team</h2>
+              <h2 style={{ textAlign: 'center', marginTop: "20px" }}>Our Team</h2>
 
         <div className="row">
           <div className="column">
@@ -71,6 +84,9 @@ const About = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+      <CustomMap/>
       </div>
     </Wrapper>
   );
@@ -148,3 +164,41 @@ const Wrapper = styled.div`
     }
   }
 `;
+
+
+
+const mapState = {
+  center: [40.198510, 44.490089],
+  zoom: 8
+};
+
+function CustomMap() {
+  return (
+    <div className="map">
+      <h2>Our Location</h2>
+      <YMaps query={{ lang: 'en_RU' }}>
+        <Map
+        style={{ marginTop: "20px", width: "100%", 
+              height: "400px", marginBottom: "50px" }}
+          defaultState={mapState}
+          instanceRef={ref => {
+            if (ref) {
+              ref.events.add("click", e => {
+                ref.balloon.close();
+              });
+            }
+          }}
+        >
+          <GeolocationControl />
+          <Placemark
+            modules={["geoObject.addon.balloon"]}
+            geometry={[40.198510, 44.490089]}
+            properties={{
+              balloonContent: "<strong>ACA</strong> </br>3 Hakob Hakobyan, Yerevan, Armenia"
+            }}
+          />
+        </Map>
+      </YMaps>
+      </div>
+  );
+}
