@@ -1,4 +1,4 @@
-
+/* 
       .about-us-wrapper{
         width: 70%;
         justify-content: center;
@@ -17,14 +17,10 @@
         height: 20px;
       }
 
-      span:hover{
-        color: rgb(214, 211, 211);
-      }
-
       .about-us-text{
         color:darkGray;
         font-size: 11px; 
-      }
+      } */
 
 
       .footer{
@@ -58,12 +54,13 @@
       span{
         margin-left: 25px;
       }
+      
+      span:hover{
+        color: rgb(214, 211, 211);
+      }
 
 
     @media(max-width: 576px){
-      .about-us-wrapper{
-        width: 100%;
-      }
       .footer-text-left{
         margin-left: 3px;
       }
@@ -76,9 +73,6 @@
     }
 
     @media(min-width: 576px) and (max-width: 768px){
-      .about-us-wrapper{
-        width: 90%;
-      }
       .footer-text-left{
         margin-left: 20px;
       }
@@ -92,9 +86,6 @@
 
 
     @media(min-width: 768px)and (max-width: 992px){
-      .about-us-wrapper{
-        width: 80%;
-      }
       .footer-text-left{
         margin-left: 25px;
       }
@@ -108,9 +99,6 @@
 
 
     @media(min-width: 992px)and (max-width: 1200px){
-      .about-us-wrapper{
-        width: 70%;
-      }
       .footer-text-left{
         margin-left: 28px;
       }
@@ -124,9 +112,6 @@
 
 
     @media (min-width: 1200px){
-      .about-us-wrapper{
-        width: 70%;
-      }
       .footer{
         width: 100%;
       }
