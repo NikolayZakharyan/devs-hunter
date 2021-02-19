@@ -6,10 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import BusinessIcon from '@material-ui/icons/Business';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import UpdateIcon from '@material-ui/icons/Update';
 import HttpIcon from '@material-ui/icons/Http';
@@ -93,82 +90,117 @@ function SideMenu({ user }) {
       </div>
 
       <div className={classes.item}>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <AccountCircle />
-            </ListItemIcon>
-            <ListItemText primary={`${user.name}`} />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <MyLocationIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.location}`} />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <BusinessIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.company}`} />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem
-            button
-            component={'a'}
-            href={`https://github.com/${user.login}`}
-            target="_blank"
-          >
-            <ListItemIcon>
-              <GitHubIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.login}`} />
-          </ListItem>
-        </List>
+        {user.name ? (
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <AccountCircle />
+              </ListItemIcon>
+              <ListItemText primary={`${user.name}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.location ? (
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <MyLocationIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${user.location}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.company ? (
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <BusinessIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${user.company}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.login ? (
+          <List>
+            <ListItem
+              button
+              component={'a'}
+              href={`https://github.com/${user.login}`}
+              target="_blank"
+            >
+              <ListItemIcon>
+                <GitHubIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${user.login}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.blog ? (
+          <List>
+            <ListItem
+              button
+              component={'a'}
+              href={`${user.blog}`}
+              target="_blank"
+              title={`${user.blog}`}
 
-        <List>
-          <ListItem
-            button
-            component={'a'}
-            href={`${user.blog}`}
-            target="_blank"
-          >
-            <ListItemIcon>
-              <HttpIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.blog}`} />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <UpdateIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.updated_at.slice(0, 10)}`} />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem
-            button
-            component={'a'}
-            href={`https://twitter.com/${user.twitter_username}`}
-            target="_blank"
-          >
-            <ListItemIcon>
-              <TwitterIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${user.twitter_username}`} />
-          </ListItem>
-        </List>
-        <div>
-          <div>About</div>
-          <p style={{ fontSize: '10px', margin: '6px' }}>{user.bio}</p>
-        </div>
+            >
+              <ListItemIcon>
+                <HttpIcon />
+              </ListItemIcon>
+              {/* <ListItemText primary={`${user.blog}`} /> */}
+              <ListItemText primary={`${user.login}s blog`} />
+
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.updated_at ? (
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <UpdateIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${user.updated_at.slice(0, 10)}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.twitter_username ? (
+          <List>
+            <ListItem
+              button
+              component={'a'}
+              href={`https://twitter.com/${user.twitter_username}`}
+              target="_blank"
+            >
+              <ListItemIcon>
+                <TwitterIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${user.twitter_username}`} />
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
+        {user.bio ? (
+          <div>
+            <div>About</div>
+            <p style={{ fontSize: '10px', margin: '6px' }}>{user.bio}</p>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </Drawer>
   );

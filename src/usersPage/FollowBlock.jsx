@@ -1,28 +1,175 @@
 import React, { useState, useEffect } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const FollowBlock = (follow) => {
   // https://api.github.com/users/willmcgugan/followers
   // https://api.github.com/users/willmcgugan/following
-
-//   console.log(follow);
-  //
+  const preventDefault = (event) => event.preventDefault();
 
   const [urlFollowers, setUrlFollowers] = useState(`#`);
   const [urlFollowing, setUrlFollowing] = useState(`#`);
+  const [followersAll, setFollowersAll] = useState([]);
+  const [followingAll, setFollowingAll] = useState([]);
 
   useEffect(() => {
     setUrlFollowing(`https://api.github.com/users/${follow.login}/following`);
     setUrlFollowers(`https://api.github.com/users/${follow.login}/followers`);
+
+    // axios(urlFollowers)
+    //   .then(({ data }) => {
+    //     // console.log(data);
+
+    //     setFollowersAll(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     console.log('---E--R--R--O--R---');
+    //   });
+
+    // axios(urlFollowing)
+    //   .then(({ data }) => {
+    //     // console.log(data);
+
+    //     setFollowingAll(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     console.log('---E--R--R--O--R---');
+    //   });
+
+    Promise.allSettled([axios(urlFollowers), axios(urlFollowing)])
+      .then((result) => {
+        // `result` should contain an array of either http responses or errors
+        console.log(result);
+
+        if (result[0].status === 'fulfilled') {
+          setFollowersAll(result[0].value.data);
+        }
+        if (result[1].status === 'fulfilled') {
+          setFollowingAll(result[1].value.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log('---E--R--R--O--R---');
+      });
   }, [follow]);
 
   console.log(urlFollowers);
 
   return (
-    <div>
-      <div>FOLLOWERS: {follow.followers}</div>
-      <div>FOLLOWing: {follow.following}</div>
-    </div>
+    <Wrapper>
+      <div className="container">
+        <p className="flw">FOLLOWERS: {follow.followers}</p>
+
+        <div className="followers">
+          <div className="followers-cards">
+            {followersAll.map((item, i) => {
+              return (
+                <div className="card" key={i}>
+                  <Avatar alt={item.login} src={item.avatar_url} />
+                  <Link
+                    href={`https://github.com/${item.login} `}
+                    target={'blank'}
+                    // onClick={preventDefault}
+                  >
+                    <p>{item.login}</p>
+                  </Link>
+                  <Button
+                    href={`/show/${item.login} `}
+                    target={'blank'}
+                    color="primary"
+                  >
+                    <p>Analytics</p>
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <p className="flw">FOLLOWING: {follow.following}</p>
+        <div className="followers">
+          <div className="followers-cards">
+            {followingAll.map((item, i) => {
+              return (
+                <div className="card" key={i}>
+                  <Avatar alt={item.login} src={item.avatar_url} />
+                  <Link
+                    href={`https://github.com/${item.login} `}
+                    target={'blank'}
+                    // onClick={preventDefault}
+                  >
+                    <p>{item.login}</p>
+                  </Link>
+                  <Button
+                    href={`/show/${item.login} `}
+                    target={'blank'}
+                    color="primary"
+                  >
+                    <p>Analytics</p>
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </Wrapper>
   );
 };
 
 export default FollowBlock;
+
+const Wrapper = styled.div`
+  .container {
+    margin-top: 5px;
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+  }
+  .followers {
+    display: flex;
+    overflow: auto;
+  }
+  .followers-cards {
+    /* background-size:cover; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+  .card {
+    /* overflow-x: auto; */
+
+    align-items: center;
+    width: 100px;
+    height: 140px;
+  }
+  .MuiAvatar-root {
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    border: 3px solid #9c9898;
+  }
+  p {
+    font-size: 10px;
+    margin: 0 auto;
+  }
+  .MuiButton-label {
+    margin: 0 auto;
+  }
+
+  .flw {
+    font-size: 14px;
+    margin-right: 100%;
+  }
+`;
