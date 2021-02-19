@@ -10,6 +10,10 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import UpdateIcon from '@material-ui/icons/Update';
+import HttpIcon from '@material-ui/icons/Http';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
@@ -43,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '30px',
     },
     '& span': {
-      marginLeft: '-22px',
+      marginLeft: '-10px',
       fontSize: '13px',
     },
   },
@@ -52,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 function SideMenu({ user }) {
   const classes = useStyles();
 
-  console.log(user);
+  // console.log(user);
 
   // const user={
   //   name: 'Liana',
@@ -81,13 +85,19 @@ function SideMenu({ user }) {
           className={classes.bigAvatar}
         />
       </Grid>
+      <div>
+        <div>in Github</div>
+        <p style={{ fontSize: '12px', margin: '6px' }}>
+          {user.created_at.slice(0, 10)}
+        </p>
+      </div>
+
       <div className={classes.item}>
         <List>
           <ListItem>
             <ListItemIcon>
               <AccountCircle />
             </ListItemIcon>
-            {/* <ListItemText primary={`${user.name} ${user.surname}`} /> */}
             <ListItemText primary={`${user.name}`} />
           </ListItem>
         </List>
@@ -108,29 +118,57 @@ function SideMenu({ user }) {
           </ListItem>
         </List>
         <List>
-          <ListItem>
+          <ListItem
+            button
+            component={'a'}
+            href={`https://github.com/${user.login}`}
+            target="_blank"
+          >
             <ListItemIcon>
-              <AssignmentIndIcon />
+              <GitHubIcon />
             </ListItemIcon>
-            <ListItemText primary={`${user.position}`} />
+            <ListItemText primary={`${user.login}`} />
+          </ListItem>
+        </List>
+
+        <List>
+          <ListItem
+            button
+            component={'a'}
+            href={`${user.blog}`}
+            target="_blank"
+          >
+            <ListItemIcon>
+              <HttpIcon />
+            </ListItemIcon>
+            <ListItemText primary={`${user.blog}`} />
           </ListItem>
         </List>
         <List>
           <ListItem>
             <ListItemIcon>
-              <EmailIcon />
+              <UpdateIcon />
             </ListItemIcon>
-            <ListItemText primary={`${user.email}`} />
+            <ListItemText primary={`${user.updated_at.slice(0, 10)}`} />
           </ListItem>
         </List>
         <List>
-          <ListItem>
+          <ListItem
+            button
+            component={'a'}
+            href={`https://twitter.com/${user.twitter_username}`}
+            target="_blank"
+          >
             <ListItemIcon>
-              <PhoneIcon />
+              <TwitterIcon />
             </ListItemIcon>
-            <ListItemText primary={`${user.phone}`} />
+            <ListItemText primary={`${user.twitter_username}`} />
           </ListItem>
         </List>
+        <div>
+          <div>About</div>
+          <p style={{ fontSize: '10px', margin: '6px' }}>{user.bio}</p>
+        </div>
       </div>
     </Drawer>
   );

@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import { GithubContext } from '../context/context';
-import UsersPage from '../usersPage/usersPage';
+import SideMenu from '../usersPage/usersPageParts';
+import FollowBlock from '../usersPage/FollowBlock';
 
 function Analytic() {
   const { limite } = React.useContext(GithubContext);
@@ -42,6 +43,8 @@ function Analytic() {
         name,
         followers,
         following,
+        following_url,
+        followers_url,
         bio,
         location,
         blog,
@@ -51,11 +54,12 @@ function Analytic() {
         updated_at,
         repos_url,
         type,
+        login,
       } = data;
       //add in state
       setAvatar(avatar_url);
       setName(name);
-      setFollow({ followers, following });
+      setFollow({ followers, following, login});
       setUserInfo({
         name,
         bio,
@@ -66,7 +70,8 @@ function Analytic() {
         twitter_username,
         updated_at,
         type,
-        avatar_url
+        avatar_url,
+        login,
       });
       setUserrepo(repos_url);
     });
@@ -76,7 +81,9 @@ function Analytic() {
 
   return (
     <div>
-      <UsersPage user={ userInfo} />
+      {/* <UsersPage user={userInfo} /> */}
+      <SideMenu user={userInfo} />
+      <FollowBlock {...follow}/>
       limite: <h1>{limite}</h1>
       <div>
         <img src={avatar} alt="" />

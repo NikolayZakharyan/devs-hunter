@@ -29,10 +29,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Switch>
           <Route path="/" exact>
             {/* <Header /> */}
-            <Navbar />
             <div style={{ margin: '10% 15%' }}>
               <SearchBar
                 value={input}
@@ -50,7 +50,7 @@ function App() {
             <Analytic />
           </Route>
         </Switch>
-        <AboutUsAndFooter />
+        {/* <AboutUsAndFooter /> */}
       </Router>
     </div>
   );
