@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
+// import GithubTrend from './components/GithubTrend';
+// import Header from './pages/header/Header';
+// import AboutUsAndFooter from './aboutUs&Footer/aboutUs&Footer'
+//
 import GithubTrend from './components/githubTrends/GithubTrend';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/footer';
@@ -24,10 +28,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Switch>
           <Route path="/" exact>
             {/* <Header /> */}
-            <Navbar />
             <div style={{ margin: '10% 15%' }}>
               <SearchBar
                 value={input}
@@ -45,7 +49,8 @@ function App() {
             <Analytic />
           </Route>
         </Switch>
-        <Footer />
+        {/* // <Footer /> */}
+        {/* <AboutUsAndFooter /> */}
       </Router>
     </div>
   );

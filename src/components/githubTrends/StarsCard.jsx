@@ -57,6 +57,15 @@ const StarsCard = ({ data }) => {
             >
               GO TO GITHUB
             </Button>
+            <Button
+              className="btn"
+              variant="outlined"
+              color="primary"
+              href={`/show/${item.userName}`}
+              target="blank"
+            >
+              ANALAYTICs
+            </Button>
           </div>
         </div>
       </Wrapper>

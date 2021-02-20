@@ -10,7 +10,7 @@ function Example({ info }) {
 
   
   
- 
+ console.log(info)
 
   
 

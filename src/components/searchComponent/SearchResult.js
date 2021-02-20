@@ -13,7 +13,6 @@ const SearchResult = ({ data }) => {
   const mainUrl = `https://api.github.com/search/users?q=`;
 
   useEffect(() => {
-    
     rateLimit();
 
     const getAPI = () => {
@@ -69,6 +68,9 @@ const SearchResult = ({ data }) => {
           const profileBio = $('.user-profile-bio').text();
           const location = $('.p-label').text();
           const skills = [];
+          const org = $('#org-members').text();
+
+          console.log(org);
 
           $('[itemprop="programmingLanguage"]').each((i, elem) => {
             if (skills.indexOf($(elem).text()) === -1 && $(elem).text()) {
@@ -78,7 +80,7 @@ const SearchResult = ({ data }) => {
           const { login, avatar_url } = dataArray[i];
           setCard((card) => [
             ...card,
-            { fullName, profileBio, location, skills, login, avatar_url },
+            { fullName, profileBio, location, skills, login, avatar_url, org },
           ]);
         })
         .catch(function (error) {
