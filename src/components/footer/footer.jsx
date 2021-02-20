@@ -1,7 +1,7 @@
 import React from 'react';
-import './aboutUsAndFooterStyle.css';
+import './footer.css';
 
-function AboutUsAndFooter() {
+function Footer() {
   return (
     <div className="aboutus-and-footer">
       <CreateFooter />
@@ -40,4 +40,4 @@ function CreateFooter() {
   );
 }
 
-export default AboutUsAndFooter;
+export default Footer;

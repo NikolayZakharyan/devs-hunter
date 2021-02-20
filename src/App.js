@@ -7,7 +7,6 @@ import './App.css';
 // =======
 import GithubTrend from './components/githubTrends/GithubTrend';
 import Navbar from './components/navbar/Navbar';
-import AboutUsAndFooter from './AboutUs&Footer/AboutUs&Footer';
 
 import SearchResult from './components/searchComponent/SearchResult';
 import SearchBar from 'material-ui-search-bar';

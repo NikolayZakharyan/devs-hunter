@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { YMaps, Map, Placemark, GeolocationControl } from "react-yandex-maps";
 import { BorderAllRounded } from '@material-ui/icons';
+import Footer from '../footer/footer'
 
 
 const About = () => {
@@ -31,14 +32,14 @@ const About = () => {
             <div className="card">
               <img
                 src="http://thesocialdynamic.co.za/wp-content/uploads/2013/03/image-alignment-150x150.jpg"
-                alt="Jane"
+                alt="Nikolay"
                 // style={{width:'100%'}}
               ></img>
               <div className="container">
-                <h2>Jane Doe</h2>
-                <p className="title">CEO Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>jane@example.com</p>
+                <h2>Nikolay Zakharyan</h2>
+                <p className="title">Project Senior</p>
+                <p>Some text that describes Nikolay</p>
+                <p>nikolzakharyan@gmail.com</p>
                 <p>
                   <button className="button">Contact</button>
                 </p>
@@ -50,14 +51,14 @@ const About = () => {
             <div className="card">
               <img
                 src="http://thesocialdynamic.co.za/wp-content/uploads/2013/03/image-alignment-150x150.jpg"
-                alt="Mike"
+                alt="Zhoya"
                 // style="width:100%"
               ></img>
               <div className="container">
-                <h2>Mike Ross</h2>
-                <p className="title">Art Director</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>mike@example.com</p>
+                <h2>Zhoya Ghalumyan</h2>
+                <p className="title">Project developer</p>
+                <p>Some text that describes Zhoya.</p>
+                <p>zhoya@example.com</p>
                 <p>
                   <button className="button">Contact</button>
                 </p>
@@ -69,14 +70,14 @@ const About = () => {
             <div className="card">
               <img
                 src="http://thesocialdynamic.co.za/wp-content/uploads/2013/03/image-alignment-150x150.jpg"
-                alt="John"
+                alt="Liana"
                 // style="width:100%"
               ></img>
               <div className="container">
-                <h2>John Doe</h2>
-                <p className="title">Designer</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>john@example.com</p>
+                <h2>Liana Ilyichyova</h2>
+                <p className="title">Project developer</p>
+                <p>Some text that describes Liana.</p>
+                <p>liana.ilyichyova@gmail.com</p>
                 <p>
                   <button className="button">Contact</button>
                 </p>
@@ -86,7 +87,10 @@ const About = () => {
         </div>
       </div>
       <div>
-      <CustomMap/>
+        <CustomMap/>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </Wrapper>
   );
@@ -97,26 +101,28 @@ export default About;
 const Wrapper = styled.div`
 
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
+  // *,
+  // *:before,
+  // *:after {
+  //   box-sizing: inherit;
+  // }
 
   .column {
     float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 0 8px 0 -10px;
   }
 
   .row {
-      padding: 100px 500px ;
+      padding: 0px 360px ;
   }
 
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
+    width: 200px;
+    height: 400px;
   }
 
   .about-section {
@@ -124,6 +130,9 @@ const Wrapper = styled.div`
     text-align: center;
     background-color: #474e5d;
     color: white;
+    margin-bottom: 50px;
+    width: 100%;
+    margin-top: -60px;
   }
 
   .container {
@@ -154,15 +163,67 @@ const Wrapper = styled.div`
   }
 
   .button:hover {
-    background-color: #555;
+    background-color: #474e5d;
   }
 
-  @media screen and (max-width: 650px) {
+
+  @media(max-width: 576px){
     .column {
       width: 100%;
       display: block;
+      padding: 0 8px 0 14%;
     }
+    .row {
+      padding: 0px 141px ;
   }
+}
+
+  @media(min-width: 576px) and (max-width: 768px){
+    .column {
+      width: 80%;
+      display: block;
+      padding: 0 8px 0 20%;
+    }
+    .row {
+      padding: 0px 160px ;
+  }
+}
+
+
+  @media(min-width: 768px)and (max-width: 992px){
+    .column {
+      width: 33.3%;
+      display: block;
+      padding: 0 8px 0 -10px;
+    }
+    .row {
+      padding: 0px 150px ;
+  }
+}
+
+
+  @media(min-width: 992px)and (max-width: 1200px){
+    .column {
+      width: 33.3%;
+      display: block;
+      padding: 0 10px 0 -10px;
+    }
+    .row {
+      padding: 0px 250px ;
+  }
+}
+
+
+  @media (min-width: 1200px){
+    .column {
+      width: 33.3%;
+      display: block;
+      padding: 0 8px 0 -10px;
+    }
+    .row {
+      padding: 0px 360px ;
+  }
+}
 `;
 
 
@@ -179,7 +240,7 @@ function CustomMap() {
       <YMaps query={{ lang: 'en_RU' }}>
         <Map
         style={{ marginTop: "20px", width: "100%", 
-              height: "400px", marginBottom: "50px" }}
+              height: "300px", marginBottom: "50px" }}
           defaultState={mapState}
           instanceRef={ref => {
             if (ref) {
