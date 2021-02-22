@@ -53,17 +53,7 @@ const useStyles = makeStyles((theme) => ({
 function SideMenu({ user }) {
   const classes = useStyles();
 
-  // console.log(user);
 
-  // const user={
-  //   name: 'Liana',
-  //   surname: 'Ilyichyova',
-  //   company: 'Hellotex',
-  //   position: 'HR manager',
-  //   location: "Armenia",
-  //   email: 'liana.ilyichyova@gmail.com',
-  //   phone: '+374 98 331534',
-  // }
 
   return (
     <Drawer
