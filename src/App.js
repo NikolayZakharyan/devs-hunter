@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-// <<<<<<< UsersPage_Liana
 // import GithubTrend from './components/GithubTrend';
 // import Header from './pages/header/Header';
 // import AboutUsAndFooter from './aboutUs&Footer/aboutUs&Footer'
-// =======
+//
 import GithubTrend from './components/githubTrends/GithubTrend';
 import Navbar from './components/navbar/Navbar';
-import AboutUsAndFooter from './AboutUs&Footer/AboutUs&Footer';
+import Footer from './components/footer/footer';
 
 import SearchResult from './components/searchComponent/SearchResult';
 import SearchBar from 'material-ui-search-bar';
@@ -50,6 +49,7 @@ function App() {
             <Analytic />
           </Route>
         </Switch>
+        {/* // <Footer /> */}
         {/* <AboutUsAndFooter /> */}
       </Router>
     </div>
