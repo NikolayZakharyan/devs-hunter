@@ -6,10 +6,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const FollowBlock = (follow) => {
-  // https://api.github.com/users/willmcgugan/followers
-  // https://api.github.com/users/willmcgugan/following
-  const preventDefault = (event) => event.preventDefault();
-
   const [urlFollowers, setUrlFollowers] = useState(`#`);
   const [urlFollowing, setUrlFollowing] = useState(`#`);
   const [followersAll, setFollowersAll] = useState([]);
@@ -19,39 +15,12 @@ const FollowBlock = (follow) => {
     setUrlFollowing(`https://api.github.com/users/${follow.login}/following`);
     setUrlFollowers(`https://api.github.com/users/${follow.login}/followers`);
 
-    // axios(urlFollowers)
-    //   .then(({ data }) => {
-    //     // console.log(data);
-
-    //     setFollowersAll(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     console.log('---E--R--R--O--R---');
-    //   });
-
-    // axios(urlFollowing)
-    //   .then(({ data }) => {
-    //     // console.log(data);
-
-    //     setFollowingAll(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     console.log('---E--R--R--O--R---');
-    //   });
-
-    Promise.allSettled([axios(urlFollowers), axios(urlFollowing)])
+    Promise.all([axios(urlFollowers), axios(urlFollowing)])
       .then((result) => {
         // `result` should contain an array of either http responses or errors
         console.log(result);
-
-        if (result[0].status === 'fulfilled') {
-          setFollowersAll(result[0].value.data);
-        }
-        if (result[1].status === 'fulfilled') {
-          setFollowingAll(result[1].value.data);
-        }
+        setFollowersAll(result[0].data);
+        setFollowingAll(result[1].data);
       })
       .catch((error) => {
         console.log(error);
@@ -65,7 +34,6 @@ const FollowBlock = (follow) => {
     <Wrapper>
       <div className="container">
         <p className="flw">FOLLOWERS: {follow.followers}</p>
-
         <div className="followers">
           <div className="followers-cards">
             {followersAll.map((item, i) => {

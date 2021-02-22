@@ -49,7 +49,7 @@ function App() {
             <Analytic />
           </Route>
         </Switch>
-        {/* // <Footer /> */}
+        <Footer />
         {/* <AboutUsAndFooter /> */}
       </Router>
     </div>
