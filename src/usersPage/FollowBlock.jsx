@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
@@ -6,37 +7,37 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const FollowBlock = (follow) => {
-  const [urlFollowers, setUrlFollowers] = useState(`#`);
-  const [urlFollowing, setUrlFollowing] = useState(`#`);
+  // const [urlFollowers, setUrlFollowers] = useState(false);
+  // const [urlFollowing, setUrlFollowing] = useState(false);
   const [followersAll, setFollowersAll] = useState([]);
   const [followingAll, setFollowingAll] = useState([]);
+  const [user, setUser] = useState(useParams().slug);
 
   useEffect(() => {
-    setUrlFollowing(`https://api.github.com/users/${follow.login}/following`);
-    setUrlFollowers(`https://api.github.com/users/${follow.login}/followers`);
+    // setUrlFollowing(`https://api.github.com/users/${user}/following`);
+    // setUrlFollowers(`https://api.github.com/users/${user}/followers`);
 
-    Promise.all([axios(urlFollowers), axios(urlFollowing)])
+    Promise.allSettled([
+      axios(`https://api.github.com/users/${user}/following`),
+      axios(`https://api.github.com/users/${user}/followers`),
+    ])
       .then((result) => {
-        // `result` should contain an array of either http responses or errors
-        console.log(result);
-        setFollowersAll(result[0].data);
-        setFollowingAll(result[1].data);
+        setFollowingAll(result[0].value.data);
+        setFollowersAll(result[1].value.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         console.log('---E--R--R--O--R---');
       });
-  }, [follow]);
-
-  console.log(urlFollowers);
+  }, [user]);
 
   return (
     <Wrapper>
       <div className="container">
-        <p className="flw">FOLLOWERS: {follow.followers}</p>
+        <p className="flw">FOLLOWING: {follow.following}</p>
         <div className="followers">
           <div className="followers-cards">
-            {followersAll.map((item, i) => {
+            {followingAll.map((item, i) => {
               return (
                 <div className="card" key={i}>
                   <Avatar alt={item.login} src={item.avatar_url} />
@@ -60,12 +61,11 @@ const FollowBlock = (follow) => {
           </div>
         </div>
       </div>
-
       <div className="container">
-        <p className="flw">FOLLOWING: {follow.following}</p>
+        <p className="flw">FOLLOWERS: {follow.followers}</p>
         <div className="followers">
           <div className="followers-cards">
-            {followingAll.map((item, i) => {
+            {followersAll.map((item, i) => {
               return (
                 <div className="card" key={i}>
                   <Avatar alt={item.login} src={item.avatar_url} />

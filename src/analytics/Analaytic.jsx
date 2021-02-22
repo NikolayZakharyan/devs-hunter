@@ -29,22 +29,16 @@ function Analytic() {
     type: '',
   });
   const [userrepo, setUserrepo] = useState('');
-  // const [following, setFollowing] = useState(0);
-
-  let { slug } = useParams();
-
-  // console.log(limite);
 
   useEffect(() => {
+
     axios(`https://api.github.com/users/${user}`).then(({ data }) => {
-      console.log(data);
+      // console.log(data);
       const {
         avatar_url,
         name,
         followers,
         following,
-        following_url,
-        followers_url,
         bio,
         location,
         blog,

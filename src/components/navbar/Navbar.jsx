@@ -1,21 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = () => {
+
+  const history = useHistory();
+  const handleClick = () => history.push('/');
   return (
     <Wrapper>
       <nav>
-        <div className="logo">DEVsHUNTER</div>
+        <div className="logo" onClick={handleClick}>DEVsHUNTER</div>
         <input type="checkbox" id="click"></input>
         <label htmlFor="click" className="menu-btn">
           <i className="fas fa-bars"></i>
         </label>
         <ul>
           <li>
-            <a className="active" href="#">
-              Home
-            </a>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -26,7 +27,6 @@ const Navbar = () => {
           <li>
             <a href="#">Registration</a>
           </li>
-
         </ul>
       </nav>
     </Wrapper>
@@ -45,17 +45,18 @@ const Wrapper = styled.nav`
     display: flex;
     height: 80px;
     width: 100%;
-    background: #546E7A;
+    background: #546e7a;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px 0 100px;
     flex-wrap: wrap;
-    margin-bottom:60px;
+    margin-bottom: 60px;
   }
   nav .logo {
     color: #fff;
     font-size: 35px;
     font-weight: 600;
+    cursor: pointer;
   }
   nav ul {
     display: flex;
