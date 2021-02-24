@@ -3,13 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = () => {
-
   const history = useHistory();
   const handleClick = () => history.push('/');
   return (
     <Wrapper>
       <nav>
-        <div className="logo" onClick={handleClick}>DEVsHUNTER</div>
+        <div className="logo" onClick={handleClick}>
+          DEVsHUNTER
+        </div>
         <input type="checkbox" id="click"></input>
         <label htmlFor="click" className="menu-btn">
           <i className="fas fa-bars"></i>
@@ -22,10 +23,10 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="#">Login</a>
+            <Link to="/signup">Sign up</Link>
           </li>
           <li>
-            <a href="#">Registration</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>
