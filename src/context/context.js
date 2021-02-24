@@ -20,7 +20,11 @@ const GithubProvider = ({ children }) => {
       });
   }, []);
 
-  return <GithubContext.Provider value={{limite}}>{children}</GithubContext.Provider>;
+  return (
+    <GithubContext.Provider value={{ limite }}>
+      {children}
+    </GithubContext.Provider>
+  );
 };
 
 export { GithubContext, GithubProvider };
