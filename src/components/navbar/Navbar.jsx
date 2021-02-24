@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import styled from 'styled-components';
 
 const Navbar = () => {
+  const { currentUser } = useAuth();
   const history = useHistory();
   const handleClick = () => history.push('/');
   return (
@@ -22,12 +24,24 @@ const Navbar = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/signup">Sign up</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {currentUser === null ? (
+            <>
+              {' '}
+              <li>
+                <Link to="/signup">Sign up</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              {' '}
+              <li>
+                <Link to="/dashboard">my Dashboard</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </Wrapper>

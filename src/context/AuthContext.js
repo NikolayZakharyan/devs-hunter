@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  console.log(currentUser);
+//   console.log(currentUser);
 
   const value = {
     currentUser,
