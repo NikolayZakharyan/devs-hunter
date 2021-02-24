@@ -12,6 +12,7 @@ import { AuthProvider } from './context/AuthContext';
 import SignUp from './components/authFire/SignUp';
 import LogIn from './components/authFire/LogIn';
 import Dashboard from './components/userDashboard/Dashboard';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   const [input, setInput] = useState('');
@@ -55,9 +56,9 @@ function App() {
               <Route path="/login">
                 <LogIn />
               </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
+              <PrivateRoute path="/dashboard" commponent={Dashboard} />
+              {/* <Dashboard />
+              </PrivateRoute> */}
               <Route path="/show/:slug">
                 <Analytic />
               </Route>

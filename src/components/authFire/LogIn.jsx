@@ -69,7 +69,6 @@ export default function LogIn() {
 
       await login(emailRef.current.value, passwordRef.current.value);
       history.push('/dashboard');
-      console.log('object');
     } catch {
       setError('Failed to create an account');
     }
@@ -79,6 +78,8 @@ export default function LogIn() {
     // passwordRef.current.value = '';
     // passwordConfirmRef.current.value = '';
   }
+    
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -95,9 +96,6 @@ export default function LogIn() {
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
-        {/* {currentUser && currentUser.email} */}
-        {/* {JSON.stringify(currentUser)} */}
-
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
@@ -111,20 +109,16 @@ export default function LogIn() {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
-            // ref={emailRef}
           />
           <TextField
-            // error={inpError}
             variant="outlined"
             margin="normal"
-            // required
             fullWidth
             name="password"
             label="Password"
             type="password"
             id="password-login"
             autoComplete="current-password"
-            // ref={passwordRef}
             inputRef={passwordRef}
           />
           <Button
