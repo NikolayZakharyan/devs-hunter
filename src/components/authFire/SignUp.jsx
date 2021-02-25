@@ -51,7 +51,7 @@ export default function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, createUserData, currentUser } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [inpError, setInpError] = useState(false);
@@ -87,7 +87,6 @@ export default function SignUp() {
     try {
       setError('');
       setLoading(true);
-      console.log(emailRef.current.value);
       await signup(emailRef.current.value, passwordRef.current.value);
       setSignUp(true);
       history.push('/dashboard');
@@ -100,6 +99,8 @@ export default function SignUp() {
     // passwordRef.current.value = '';
     // passwordConfirmRef.current.value = '';
   }
+
+  console.log(error);
 
   if (!signUp) {
     return (

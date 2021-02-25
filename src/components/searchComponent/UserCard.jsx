@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
 const UserCard = ({ info }) => {
-  console.log(info.org);
+  // console.log(info);
   return (
     <StyleWrapper>
       <div

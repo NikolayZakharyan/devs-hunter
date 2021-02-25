@@ -1,4 +1,6 @@
 import firebase from 'firebase/app';
+// import Firebase from 'firebase';
+import 'firebase/database';
 import 'firebase/auth';
 
 // console.log(firebase)
@@ -20,6 +22,18 @@ const app = firebase.initializeApp({
   messagingSenderId: '32895425314',
   appId: '1:32895425314:web:205a1f4e86e049f040237b',
 });
+
+
+// console.log(firebase.database().ref('email').push({ data: ['email', 'id'] }));
+
+// Firebase.database()
+//   .ref('email')
+//   .on('value', (snapshot) => {
+//     console.log(snapshot.val());
+//   });
+
+export const database = app.database();
+
 
 export const auth = app.auth();
 export default app;

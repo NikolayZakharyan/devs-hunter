@@ -10,6 +10,8 @@ const SearchResult = ({ data }) => {
   const [searchResult, setSearchResult] = useState(0);
   const [isload, setIsload] = useState(false);
 
+  console.log(data)
+
   const mainUrl = `https://api.github.com/search/users?q=`;
 
   useEffect(() => {
@@ -57,6 +59,8 @@ const SearchResult = ({ data }) => {
   const getData = async (dataArray) => {
     // https://cors-anywhere.herokuapp.com/
     // https://api.allorigins.win/raw?url=
+
+
 
     setCard([]);
 

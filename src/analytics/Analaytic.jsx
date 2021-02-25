@@ -10,6 +10,7 @@ import axios from 'axios';
 import { GithubContext } from '../context/context';
 import SideMenu from '../usersPage/usersPageParts';
 import FollowBlock from '../usersPage/FollowBlock';
+import Follow from '../components/follow/Follow';
 
 function Analytic() {
   const { limite } = React.useContext(GithubContext);
@@ -31,7 +32,6 @@ function Analytic() {
   const [userrepo, setUserrepo] = useState('');
 
   useEffect(() => {
-
     axios(`https://api.github.com/users/${user}`).then(({ data }) => {
       // console.log(data);
       const {
@@ -53,7 +53,7 @@ function Analytic() {
       //add in state
       setAvatar(avatar_url);
       setName(name);
-      setFollow({ followers, following, login});
+      setFollow({ followers, following, login });
       setUserInfo({
         name,
         bio,
@@ -75,17 +75,19 @@ function Analytic() {
 
   return (
     <div>
+      limit: <h1>{limite}</h1>
+
       {/* <UsersPage user={userInfo} /> */}
       <SideMenu user={userInfo} />
-      <FollowBlock {...follow}/>
-      limite: <h1>{limite}</h1>
-      <div>
+      <FollowBlock {...follow} />
+      {/* <div>
         <img src={avatar} alt="" />
         <h4>{name}</h4>
         <p>followers: {follow.followers}</p>
         <p>following: {follow.following}</p>
       </div>
-      <div>repo URL: {userrepo}</div>
+      <div>repo URL: {userrepo}</div> */}
+      <Follow  user={userInfo}/>
     </div>
   );
 }
