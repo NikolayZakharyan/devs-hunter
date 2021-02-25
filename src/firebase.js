@@ -24,14 +24,6 @@ const app = firebase.initializeApp({
 });
 
 
-// console.log(firebase.database().ref('email').push({ data: ['email', 'id'] }));
-
-// Firebase.database()
-//   .ref('email')
-//   .on('value', (snapshot) => {
-//     console.log(snapshot.val());
-//   });
-
 export const database = app.database();
 
 
