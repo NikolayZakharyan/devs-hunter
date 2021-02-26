@@ -8,18 +8,20 @@ const Dashboard = () => {
   const { logout, currentUser, database } = useAuth();
   const history = useHistory();
   const [following, setFollowing] = useState([]);
+  const [empty, setEmpty] = useState(false);
 
   async function getDataFollow() {
     const ref = await database.ref(`${currentUser.uid}/follow/`);
-    const following = await ref.once('value', async (snapshot) => {
+    await ref.once('value', async (snapshot) => {
       try {
+        setEmpty(false);
         await setFollowing(Object.values(snapshot.val()));
       } catch (error) {
+        setEmpty(true);
         console.log(error);
       }
     });
   }
-
 
   useEffect(() => {
     getDataFollow();
@@ -41,7 +43,8 @@ const Dashboard = () => {
         Log OUT
       </Button>
       <div style={{ margin: '60px' }}>
-        MY FOLLOWING LIST
+        {empty ? <>FOLLOWING LIST IS EMPTY</> : <>MY FOLLOWING LIST</>}
+
         <Following data={following} />
       </div>
     </div>

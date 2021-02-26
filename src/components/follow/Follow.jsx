@@ -34,7 +34,6 @@ const Follow = ({ user }) => {
         .child('follow')
         .child(login)
         .set({ avatar_url: avatar_url, login: login });
-
       setIsFoolow(false);
     } catch (error) {
       console.log('add Follow have a proble');
@@ -46,7 +45,6 @@ const Follow = ({ user }) => {
     try {
       const ref = await database.ref(`${currentUser.uid}/follow/${login}`);
       ref.remove();
-      console.log(ref);
       setIsFoolow(true);
     } catch (error) {
       console.log('UN Follow havea some problem');

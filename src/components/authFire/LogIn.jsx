@@ -1,4 +1,4 @@
-import React, { useRef, useState  } from 'react';
+import React, { useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
@@ -52,13 +52,19 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
   const history = useHistory();
-
   const classes = useStyles();
+
+  if (currentUser) {
+    return (
+      <>
+        Nice try! <Link to="/dashboard">Go To my dashboard</Link>
+      </>
+    );
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -78,8 +84,6 @@ export default function LogIn() {
     // passwordRef.current.value = '';
     // passwordConfirmRef.current.value = '';
   }
-    
-
 
   return (
     <Container component="main" maxWidth="xs">

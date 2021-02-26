@@ -9,9 +9,6 @@ const SearchResult = ({ data }) => {
   const [searchLimit, setSearchlimit] = useState(0);
   const [searchResult, setSearchResult] = useState(0);
   const [isload, setIsload] = useState(false);
-
-  console.log(data)
-
   const mainUrl = `https://api.github.com/search/users?q=`;
 
   useEffect(() => {
