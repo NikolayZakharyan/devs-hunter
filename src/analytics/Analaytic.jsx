@@ -11,6 +11,8 @@ import { GithubContext } from '../context/context';
 import SideMenu from '../usersPage/usersPageParts';
 import FollowBlock from '../usersPage/FollowBlock';
 import Follow from '../components/follow/Follow';
+import { useAuth } from '../context/AuthContext';
+import Button from '@material-ui/core/Button';
 
 function Analytic() {
   const { limite } = React.useContext(GithubContext);
@@ -30,6 +32,7 @@ function Analytic() {
     type: '',
   });
   const [userrepo, setUserrepo] = useState('');
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     axios(`https://api.github.com/users/${user}`).then(({ data }) => {
@@ -73,10 +76,15 @@ function Analytic() {
 
   // console.log(userInfo);
 
+  const redirectToSignupPage = () => {
+    console.log("doing something");
+    const win = window.open("/signup", "_blank");
+    win.focus();
+  }
+
   return (
     <div>
       limit: <h1>{limite}</h1>
-
       {/* <UsersPage user={userInfo} /> */}
       <SideMenu user={userInfo} />
       <FollowBlock {...follow} />
@@ -87,7 +95,13 @@ function Analytic() {
         <p>following: {follow.following}</p>
       </div>
       <div>repo URL: {userrepo}</div> */}
-      <Follow  user={userInfo}/>
+      {currentUser ? (
+        <Follow user={userInfo} />
+      ) : (
+        <Button variant="outlined" color="secondary" title="SIGN UP or LOG IN FIRST" onClick={redirectToSignupPage}>
+          FOllow
+        </Button>
+      )}
     </div>
   );
 }

@@ -5,15 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import UserCard from './UserCard';
 
-
 function Example({ info }) {
-
-  
-  
- console.log(info)
-
-  
-
   const useStyles = makeStyles((theme) => ({
     cardGrid: {
       paddingTop: theme.spacing(2),
@@ -33,8 +25,6 @@ function Example({ info }) {
   }));
 
   const classes = useStyles();
-
-  // console.log('example')
 
   return (
     <React.Fragment>

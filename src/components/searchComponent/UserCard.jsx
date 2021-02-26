@@ -36,7 +36,6 @@ const UserCard = ({ info }) => {
           >
             Analytics
           </button>
-          <button className="primary ghost">Following</button>
         </div>
         <div className="skills">
           <ul>

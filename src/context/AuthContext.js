@@ -11,6 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [fireUpdate, setFireUpdate] = useState();
 
   async function signup(email, password) {
     const successSignup = await auth.createUserWithEmailAndPassword(
@@ -26,7 +27,7 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
-  function logout(email, password) {
+  function logout() {
     return auth.signOut();
   }
 
@@ -46,29 +47,13 @@ export function AuthProvider({ children }) {
     }
   }
 
-  //   useEffect(() => {
-  //     if (currentUser) {
-  //       const data = database.ref(currentUser.uid).set({
-  //         email: currentUser.email,
-  //         // follow: [{ avatarURL: '', user_login: 'inital_login' }],
-  //         follow: [null],
-  //         id: currentUser.uid,
-  //       });
-  //       return data;
-  //     } else {
-  //       const data = [];
-  //       return data;
-  //     }
-  //   }, [currentUser]);
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
-
     return unsubscribe;
-  }, []);
+  }, [fireUpdate]);
 
   //   console.log(currentUser);
 

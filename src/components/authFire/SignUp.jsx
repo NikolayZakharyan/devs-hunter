@@ -60,6 +60,11 @@ export default function SignUp() {
 
   const classes = useStyles();
 
+  if (currentUser) {
+    return <>Nice try! <Link to="/dashboard">Go To my dashboard</Link></>
+  }
+
+
   function handleOnchangePass(e) {
     e.preventDefault();
 
