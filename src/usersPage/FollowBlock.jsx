@@ -13,7 +13,7 @@ const FollowBlock = (follow) => {
   const [followingAll, setFollowingAll] = useState([]);
   const [user, setUser] = useState(useParams().slug);
 
-  console.log(follow);
+  // console.log(follow);
 
   useEffect(() => {
     // setUrlFollowing(`https://api.github.com/users/${user}/following`);

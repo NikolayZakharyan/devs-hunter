@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
-  function logout() {
+  function logout(email, password) {
     return auth.signOut();
   }
 
@@ -52,6 +52,7 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
       setLoading(false);
     });
+
     return unsubscribe;
   }, [fireUpdate]);
 

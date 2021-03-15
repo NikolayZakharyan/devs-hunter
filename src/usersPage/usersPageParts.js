@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 function SideMenu({ user }) {
   const classes = useStyles();
 
-
+  // console.log(user)
 
   return (
     <Drawer
